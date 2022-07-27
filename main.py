@@ -70,7 +70,7 @@ team_pos = {
 }
 
 answers = {
-  1: '.andromeda',
+  1: '.Andromeda',
   2: '.golden record',
   3: '.afronaut nkoloso',
   4: '.geminids meteor shower',
@@ -85,7 +85,7 @@ class MyClient(discord.Client):
   async def on_ready(self):
     print(f"We have logged in as {client.user}!")
 
-  async def on_message(self, message):
+  async def on_message(self, message ):
     print('Message from {0.author}: {0.content}'.format(message))
     # for channel in ctf.text_channels: # Get text channel
     #   text_channel_list.append(channel.name) # Append them to the list
@@ -93,7 +93,7 @@ class MyClient(discord.Client):
 
     if message.channel.category_id in ctf:
 
-      print('Channel Name - '+str(message.channel.category_id))
+      print('Channel Name - '+str( message.channel.category_id ))
       print('')
 
       if message.channel.id == 915493953200087102:
@@ -118,7 +118,7 @@ class MyClient(discord.Client):
           time.sleep(0.3)
           team_pos[message.channel.category_id]+=1
           q=open('question'+str(team_pos[message.channel.category_id])+'.txt', 'r')
-          await message.channel.send(q.read())
+          await message.channel.send( q.read() )
           q.close()
           if team_pos[message.channel.category_id] == 8:
             await message.channel.send(open('question9.txt', 'r').read())
